@@ -1,17 +1,40 @@
-import React from "react";
-import s from './OnnOff.module.css'
+import React, {useState} from "react";
 
-type OnnOffPropsType = {
-    select: boolean
-}
+export function OnnOff() {
 
+    const [on, setOn] = useState(false)
 
-export function OnnOff(props: OnnOffPropsType) {
+    const onStyle = {
+        width: '30px',
+        height: '20px',
+        border: '1px solid black',
+        padding: '5px',
+        display: 'inline-block',
+        backgroundColor: on ? 'green' : 'white'
+    }
+    const offStyle = {
+        width: '30px',
+        height: '20px',
+        border: '1px solid black',
+        padding: '5px',
+        display: 'inline-block',
+        backgroundColor: on ? 'white' : 'red'
+    }
+    const indicatorStyle = {
+        width: '20px',
+        height: '20px',
+        border: '1px solid black',
+        borderRadius: '50%',
+        marginLeft: '10px',
+        display: 'inline-block',
+        backgroundColor: on ? 'green' : 'red'
+    }
+
     return (
-    <div className={s.full}>
-        <button className={`${s.red} ${s.green}`}>onn</button>
-        <button className={`${s.red} ${s.green}`}>off</button>
-        <div className={`${s.red} ${s.green} ${s.round}`}></div>
-    </div>
-)
+        <div>
+            <div style={onStyle} onClick={() => setOn(true)}>Onn</div>
+            <div style={offStyle} onClick={() => setOn(false)}>Off</div>
+            <div style={indicatorStyle}></div>
+        </div>
+    )
 }
