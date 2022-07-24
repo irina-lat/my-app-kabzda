@@ -1,32 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {PageTitle} from "./Components/PageTitle";
-import {Rating} from "./Components/Rating";
+import {Rating, RatingValueType} from "./Components/Rating";
 import {Accordeon} from "./Components/Accordeon";
+import {UnControlOnnOff} from "./Components/UnControlOnnOff/UnControlOnnOff";
+import {UnControlAccordeon} from "./Components/UnControlAccordeon";
+import {UnControlRating} from "./Components/UnControlRating";
 import {OnnOff} from "./Components/OnnOff/OnnOff";
 
 function App() {
+
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+    let [accordeonCollapsed, setAccordenCollapsed] = useState<boolean>(true)
+    let [onSwitch, setOnSwitch] = useState(false)
+
     return (
         <div className="App">
             <PageTitle title={'This is APP component'}/>
             <PageTitle title={'My friends'}/>
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
-            Article 1
-            <Accordeon titleValue={'Меню'} collapsed={true}/>
-            <Accordeon titleValue={'Users'} collapsed={false}/>
-            Article 2
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
-            <OnnOff />
+
+            <div>Control</div>
+            <Rating value={ratingValue} onClick={setRatingValue}/>
+            <Accordeon titleValue={'Меню'} collapsed={accordeonCollapsed} onClick={() => {setAccordenCollapsed(!accordeonCollapsed)}}/>
+            <OnnOff on={onSwitch} onClick={setOnSwitch}/>
+
+            <div>UnControl</div>
+            <UnControlAccordeon titleValue={'Меню'}/>
+            <UnControlRating/>
+            <UnControlOnnOff onClick={setOnSwitch}/> {onSwitch.toString()}
         </div>
     );
 }
