@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import './App.css';
 import {PageTitle} from "./Components/PageTitle";
-import {Rating, RatingValueType} from "./Components/Rating";
-import {Accordeon} from "./Components/Accordeon";
+import {Rating, RatingValueType} from "./Components/Rating/Rating";
+import {Accordeon} from "./Components/Accordeon/Accordeon";
 import {UnControlOnnOff} from "./Components/UnControlOnnOff/UnControlOnnOff";
 import {UnControlAccordeon} from "./Components/UnControlAccordeon";
 import {UnControlRating} from "./Components/UnControlRating";
 import {OnnOff} from "./Components/OnnOff/OnnOff";
+import Stars, {StarValue} from "./Components/Stars";
 
 function App() {
 
     let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     let [accordeonCollapsed, setAccordenCollapsed] = useState<boolean>(true)
     let [onSwitch, setOnSwitch] = useState(false)
+    let [star, setStar]= useState<StarValue>(0)
 
     return (
         <div className="App">
@@ -23,6 +25,9 @@ function App() {
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <Accordeon titleValue={'Меню'} collapsed={accordeonCollapsed} onClick={() => {setAccordenCollapsed(!accordeonCollapsed)}}/>
             <OnnOff on={onSwitch} onClick={setOnSwitch}/>
+
+            new
+            <Stars star={star} onClickStar={setStar}/>
 
             <div>UnControl</div>
             <UnControlAccordeon titleValue={'Меню'}/>
