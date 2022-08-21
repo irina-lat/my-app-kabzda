@@ -31,7 +31,8 @@ function App() {
 
             <div>UnControl</div>
             <UnControlAccordeon titleValue={'Меню'}/>
-            <UnControlRating/>
+            {/*<UnControlRating/>*/}
+            <UnControlRating defaultValue={} onChange={}/>
             <UnControlOnnOff onClick={setOnSwitch}/> {onSwitch.toString()}
         </div>
     );
